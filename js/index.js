@@ -11,14 +11,17 @@ body.addEventListener('wheel', function alertMeOnce(){
     alert("We are working on events in Javascript!");
     body.removeEventListener('wheel', alertMeOnce);
   });
-//Border (in Salmon) when copying text in Let's Go section
+//Border (in Salmon) when clicking text in Let's Go section
 const textcontent = document.querySelectorAll (".text-content");
-textcontent[0].addEventListener('copy', (e) => { e.target.style.border = '4px dashed salmon'; });  
-
-funbus.addEventListener('drag', (event) => { event.target.style.backgroundColor = 'yellow'; });
-
-funbus.addEventListener('load', (event) => { event.target.style.backgroundColor = 'yellow'; });
-
+textcontent[0].addEventListener('click', (e) => { e.target.style.border = '4px dashed salmon'; }); 
+//Stops Salmon border when clicking header, through stop propagation
+const letsGo = document.querySelector (".text-content h2")
+letsGo.addEventListener('click', (e) => { e.target.style.backgroundColor = 'blue'; 
+e.stopPropagation();}); 
+//Middle button turns yellow when mouse moves out
+const middlebutton = document.querySelectorAll (".btn");
+middlebutton[1].addEventListener('mouseout', (e) => { e.target.style.backgroundColor = 'yellow'; });
+//
 funbus.addEventListener('focus', (event) => { event.target.style.backgroundColor = 'yellow'; });
 
 funbus.addEventListener('resize', (event) => { event.target.style.backgroundColor = 'yellow'; });
